@@ -20,6 +20,10 @@ jobs:
       - name: build ECS
         uses: leanprover/lean-action@v1
 
+      - name: Install raylib deps
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y --no-install-recommends libglfw3 libglfw3-dev libx11-dev libxcursor-dev libxrandr-dev libxinerama-dev libxi-dev libxext-dev libxfixes-dev libwayland-dev libxkbcommon-dev
+
       # inherits lake installation from the previous step
       - name: build example
         working-directory: examples
